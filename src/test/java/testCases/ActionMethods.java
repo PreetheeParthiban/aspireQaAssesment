@@ -26,7 +26,10 @@ public class ActionMethods {
 
     }
 
-    public void productsData(WebDriver driver, String pName, String pList, String pCount, String addLineProd,String addLineConsume ) {
+    public void productsData(WebDriver driver, String pName, String pList, String pCount, String addLineProd,String addLineConsume ) throws InterruptedException {
+       // wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+       // wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//body/div[1]/div[1]/div[2]/div[1]/a[2]/div[1]"))));
+        Thread.sleep(2000);
         operations.clickOperation(driver, elements.inventory);
         operations.clickOperation(driver, elements.productsMenu);
         operations.clickOperation(driver, elements.productsOption);
@@ -42,7 +45,7 @@ public class ActionMethods {
 
     }
 
-    public void manufactureData(WebDriver driver, String pName, String pList, String pCount, String addLineProd,String addLineConsume)  {
+    public void manufactureData(WebDriver driver, String pName, String pList, String pCount, String addLineProd,String addLineConsume) throws InterruptedException {
         operations.clickOperation(driver, elements.appLink);
         operations.clickOperation(driver, elements.manufacturer);
         operations.clickOperation(driver, elements.manuCreate);
@@ -53,8 +56,9 @@ public class ActionMethods {
         operations.sendKeyData(driver, elements.addLineProd, addLineProd);
 
         handlingAlert(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath(addLineProd))));
+        Thread.sleep(2000);
+        //wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+       // wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//tbody/tr[1]/td[1]/div[1]/div[1]/div[1]/input[1]"))));
         operations.clickOperation(driver, elements.addLineProd);
         operations.sendKeyData(driver, elements.addLineConsume, addLineConsume);
         operations.clickOperation(driver, elements.manuSave);

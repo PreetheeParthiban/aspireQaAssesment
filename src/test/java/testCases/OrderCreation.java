@@ -24,14 +24,15 @@ public class OrderCreation {
         }
         driver.get(url);
         driver.manage().window().maximize();
-        //driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
-        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-    /*@AfterSuite(alwaysRun = true)
+    @AfterSuite(alwaysRun = true)
      public void tearDown(){
          driver.quit();
-     }*/
+     }
+
     @Test(dataProvider = "LoginData", dataProviderClass = testData.testDataProvider.class, priority = 1)
     public void loginCase(String userName, String password) {
         callMethods.logindata(driver, userName, password);
@@ -40,7 +41,7 @@ public class OrderCreation {
 
 
     @Test(priority = 2,dataProvider = "ProdData", dataProviderClass = testData.testDataProvider.class)
-    public void createProduct(String pName, String pList, String pCount, String addLineProd,String addLineConsume) {
+    public void createProduct(String pName, String pList, String pCount, String addLineProd,String addLineConsume) throws InterruptedException {
 
         callMethods.productsData(driver,pName,pList,pCount,addLineProd,addLineConsume);
 
@@ -50,7 +51,7 @@ public class OrderCreation {
 
     }
     @Test(priority = 3,dependsOnMethods = {"createProduct"},dataProvider = "ProdData", dataProviderClass = testData.testDataProvider.class)
-    public void createManufacturer(String pName, String pList, String pCount, String addLineProd,String addLineConsume) {
+    public void createManufacturer(String pName, String pList, String pCount, String addLineProd,String addLineConsume) throws InterruptedException {
         callMethods.manufactureData(driver,pName,pList,pCount,addLineProd,addLineConsume);
     }
 

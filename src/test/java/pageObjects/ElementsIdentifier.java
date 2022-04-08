@@ -10,7 +10,8 @@ public class ElementsIdentifier {
     public String clickLog="//button[@type='submit']";
 
     //App Page
-    public String inventory = "//a[@id='result_app_1']/div[@class='o_app_icon']";
+    //public String inventory = "//a[@id='result_app_1']/div[@class='o_app_icon']";
+    public String inventory ="//body/div[1]/div[1]/div[2]/div[1]/a[2]/div[1]";
     public String appLink = "//header/nav[1]/a[1]";
     //public String manufacturer = "//a[@id='result_app_1']/div[@class='o_caption']";
     public String manufacturer = "//body/div[1]/div[1]/div[2]/div[1]/a[3]/div[1]";
